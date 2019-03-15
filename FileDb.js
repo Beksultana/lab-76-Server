@@ -1,4 +1,5 @@
 const fs = require('fs');
+const nanoid = require('nanoid');
 
 const fileName = './messagesDb.json';
 
@@ -17,6 +18,10 @@ module.exports = {
         return data;
     },
     addItem(item) {
+        const date = new Date().toUTCString();
+        const id = nanoid();
+        item.id = id;
+        item.date = date;
         data.push(item);
         this.save();
     },

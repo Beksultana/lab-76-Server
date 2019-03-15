@@ -3,11 +3,12 @@ const fileDb = require('./FileDb');
 const messages = require('./src/messages');
 const cors = require('cors');
 const app = express();
-const port = 8000;
 fileDb.init();
 
 app.use(express.json());
 app.use(cors());
+
+const port = 9000;
 
 app.use('/messages', messages);
 
