@@ -15,7 +15,7 @@ module.exports = {
         }
     },
     getItems(date) {
-        const result = data.filter(message => message.date >= date);
+        const result = data.filter(message => message.date > date);
         return result;
     },
     sendData() {

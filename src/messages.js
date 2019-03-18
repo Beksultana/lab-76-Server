@@ -2,20 +2,17 @@ const express = require('express');
 const fileDb = require('../FileDb');
 const router = express.Router();
 
-router.get('/:date', (req , res) => {
-    if(req.params) {
-        res.send(fileDb.getItems(req.params.date))
+router.get('/', (req , res) => {
+    if(req.query.date) {
+        const date = req.query.date;
+        res.send(fileDb.getItems(req.query.date));
     } else {
-        res.send({message: 'No date provided'})
+        res.send(fileDb.sendData());
     }
 });
 
-router.get('/', (req, res) => {
-    res.send(fileDb.sendData())
-});
 
 router.post('/', (req, res) => {
-    console.log(req.body);
     if (req.body.author !== "" && req.body.message !== "") {
         fileDb.addItem(req.body);
         res.send({message: "OK"})
