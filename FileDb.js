@@ -9,7 +9,7 @@ module.exports = {
     init() {
         try {
             const fileContents = fs.readFileSync(fileName);
-            data =JSON.parse(fileContents)
+            data = JSON.parse(fileContents)
         }catch (e) {
             data = [];
         }
@@ -18,7 +18,7 @@ module.exports = {
         return data;
     },
     addItem(item) {
-        const date = new Date().toUTCString();
+        const date = new Date().toISOString();
         const id = nanoid();
         item.id = id;
         item.date = date;
