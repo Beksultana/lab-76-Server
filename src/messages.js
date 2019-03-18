@@ -2,8 +2,16 @@ const express = require('express');
 const fileDb = require('../FileDb');
 const router = express.Router();
 
-router.get('/', (req , res) => {
-   res.send(fileDb.getItems())
+router.get('/:date', (req , res) => {
+    if(req.params) {
+        res.send(fileDb.getItems(req.params.date))
+    } else {
+        res.send({message: 'No date provided'})
+    }
+});
+
+router.get('/', (req, res) => {
+    res.send(fileDb.sendData())
 });
 
 router.post('/', (req, res) => {

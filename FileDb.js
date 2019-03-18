@@ -14,8 +14,12 @@ module.exports = {
             data = [];
         }
     },
-    getItems() {
-        return data;
+    getItems(date) {
+        const result = data.filter(message => message.date >= date);
+        return result;
+    },
+    sendData() {
+        return data.slice(-30)
     },
     addItem(item) {
         const date = new Date().toISOString();
